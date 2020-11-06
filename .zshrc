@@ -113,15 +113,29 @@ alias bi="bundle install"
 alias dbc="rails db:create"
 alias dbm="rails db:migrate"
 alias dbs="rails db:seed"
+alias rg="rails generate"
 alias rc="rails c"
 alias rs="rails s"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-cd
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/home/zero/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export ANDROID_HOME=/mnt/c/Users/leduy/AppData/Local/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools/adb
+
+postgresql_status=`sudo service postgresql status`
+if [ "$postgresql_status" "=~" "down" ]; then postgresql_start=`sudo service postgresql start`; fi
+
+# mysql_status=`sudo service mysql status`
+# if [ "$mysql_status" "=~" "stopped" ]; then mysql_start=`sudo service mysql start`; fi
+
+cd
