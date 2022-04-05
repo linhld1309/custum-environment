@@ -1,0 +1,23 @@
+- Cài đặt các thư viện cần thiết khác:
+    sudo apt install build-essential libreadline-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libmysqlclient-dev
+- Cài đặt mysql và tạo database:
+    sudo apt install -y mysql-server-5.7
+    sudo mysql_secure_installation
+
+    create database:
+        mysql -uroot -p
+        CREATE DATABASE demo_danghh CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    Access denied for user 'root'@'localhost':
+        sudo service mysql stop
+        sudo mkdir -p /var/run/mysqld
+        sudo chown mysql:mysql /var/run/mysqld
+        sudo /usr/sbin/mysqld --skip-grant-tables --skip-networking &
+        mysql -u root
+    Reset password:
+        USE mysql;
+        UPDATE user SET authentication_string=PASSWORD("12345678") WHERE User='root';
+        FLUSH PRIVILEGES;
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new_password';
+        FLUSH PRIVILEGES;
+        UPDATE user SET plugin="mysql_native_password" WHERE User='root';
+        exit;
