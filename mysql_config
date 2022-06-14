@@ -21,3 +21,13 @@
         FLUSH PRIVILEGES;
         UPDATE user SET plugin="mysql_native_password" WHERE User='root';
         exit;
+
+
+-Nếu bạn chạy lệnh mysql -uroot -p sau đó nhập mật khẩu mà gặp lỗi Access denied for user 'root'@'localhost' thì ta xử lý như sau
+-Trước hết ta cần dừng tiến trình mysql hiện đang chạy và truy cập mysql thông qua skip-grant-tables
+
+sudo service mysql stop
+sudo mkdir -p /var/run/mysqld
+sudo chown mysql:mysql /var/run/mysqld
+sudo /usr/sbin/mysqld --skip-grant-tables --skip-networking &
+mysql -u root
