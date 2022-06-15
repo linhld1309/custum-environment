@@ -1,1 +1,2 @@
-
+# upload master_key to server
+scp config/master.key deploy@34.125.204.123:deploy/share_video/shared/config
